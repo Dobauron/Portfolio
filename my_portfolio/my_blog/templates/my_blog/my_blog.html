@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8"/>
+    <title>Portfolio - Dobromir Matuszak</title>
+    <meta name="description" content="Witam, chciałbym przedstawić napisną przeze mnie aplikację bloga."/>
+    <meta name="keywords" content="blog, web_master, Python, Django, HTML, CSS, Sqlite3"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="author" content="Dobromir Matuszak"/>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/based.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static "css/fontello/css/fontello.css" %}" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://font's.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="container">
+
+    <div class="rectangle">
+
+        <div id="logo">
+            <a href="http://127.0.0.1:8000/blog" class="transfer"><i class="icon-blogger"></i>
+            log</a></div>
+
+        <div id="time">12:00:00</div>
+        <div style="clear:both;"></div>
+    </div>
+
+    <div class="square">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div style="clear:both;"></div>
+
+    <div class="rectangle">
+        <div class="footer">2021 © Dobromir Matuszak - Blog_App</div>
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

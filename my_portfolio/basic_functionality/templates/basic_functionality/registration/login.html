@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logowanie</title>
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="log">
+
+    <h2>Ekran logowania</h2>
+    {% if form.errors %}
+        <p>
+            Nazwa użytkownika lub hasło jest niepoprawne.
+            Spróbuj ponownie
+
+        </p>
+    {% else %}
+        <p>Wypełnij poniższy formularz, aby się zalogować:</p>
+    {% endif %}
+    <form action="{% url 'main_website:login' %}" method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <p><input type="submit" value="Zaloguj"></p>
+    </form>
+    <p><a href="{% url 'main_website:password_reset' %}" class="transfer_login_out">Zapomniałeś hasła? Tutaj możesz je wyzerować</a></p>
+    <p><a href="{% url 'main_website:register' %}" class="transfer_login_out">Zarejestruj konto</a></p>
+</div>
+
+
+<div style="clear:both;"></div>
+
+
+
+
+</body>
+</html>
