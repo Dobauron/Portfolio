@@ -1,17 +1,10 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-</head>
-<body>
+{% extends "basic_user_func.html" %}
+{% block content %}
 <h1>Create account</h1>
 <p>Fill form to create account</p>
 <form action="." method="post">
-    {{ user_form.as_p }}
     {% csrf_token %}
+    {{ form.as_p }}
     <p><input type="submit" value="Create account"></p>
 </form>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "basic_user_func.html" %}
+{% block content %}
+<h2>Login display</h2>
+{% if form.errors %}
+<p>
+    Nazwa użytkownika lub hasło jest niepoprawne.
+    Spróbuj ponownie
+
+</p>
+{% else %}
+<p>Fill below form for login:</p>
+{% endif %}
+<form action="{% url 'login' %}" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}"/>
+    <p><input type="submit" value="Zaloguj"></p>
+</form>
+<p><a href="{% url 'password_reset' %}" class="transfer_login_out">Forget password? You can reset it here!</a></p>
+<p><a href="{% url 'register' %}" class="transfer_login_out">Register new account here!</a></p>
+<p><a href="{% url 'main_view' %}" class="transfer_login_out">Back to main page here!</a></p>
+{% endblock %}
+

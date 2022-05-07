@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en" >
@@ -26,9 +26,9 @@
             {% if request.user.is_authenticated %}
 
                 Witaj, <a href="{% url 'dashboard' %}" class="transfer_login_out"> {{ request.user }}</a>!
-                <a href="{% url 'basic_functionality:logout' %}" class="transfer_login_out">Wyloguj</a>
+                <a href="{% url 'logout' %}" class="transfer_login_out">Wyloguj</a>
             {% else %}
-                <a href="{% url 'basic_functionality:login' %}" class="transfer_login_out">Logowanie</a>
+                <a href="{% url 'login' %}" class="transfer_login_out">Logowanie</a>
             {% endif %}
 
         </div>
@@ -44,9 +44,9 @@
         </div>
 
         <div class="tile1">
-            <i class="icon-graduation-cap"></i>
+            <a href="{% url 'CV' %}" target="_blank" class="transfer"><i class="icon-graduation-cap"></i>
             </br>
-            Curriculum vitae
+            Curriculum vitaea</a>
         </div>
 
         <div style="clear:both;"></div>
@@ -110,7 +110,7 @@
     <div style="clear:both;"></div>
 
     <div class="rectangle">
-        <div class="footer">2021 © Dobromir Matuszak - Portfolio</div>
+        <div class="footer">2022 © Dobromir Matuszak - Portfolio</div>
     </div>
 
 </div>

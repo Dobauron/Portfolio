@@ -1,0 +1,10 @@
+{% extends "basic_user_func.html" %}
+{% block title %}dashboard{% endblock %}
+{% block content %}
+<h3>Welcome on your dashboard, {{ request.user.first_name }} !</h3>
+<a href="{% url "logout" %}" class="transfer_login_out">Wyloguj</a>
+<br>
+<a href="{% url "password_change" %}" class="transfer_login_out">Zmień hasło użytkownika</a>
+</br>
+{% endblock %}
+
