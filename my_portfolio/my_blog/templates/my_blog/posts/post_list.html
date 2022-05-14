@@ -7,7 +7,7 @@
     {% for post in posts %}
 
     <h4>
-        <a href ="{{ post.get_absolute_url }}" class="list_to_detail">
+        <a href="{{ post.get_absolute_url }}" class="list_to_detail">
             {{ post.title }}
         </a>
     </h4>
@@ -15,21 +15,21 @@
     {% include "paginator.html" with page=posts %}
 
 </div>
-<div class="tag_sidebar">
-    <h2>Most common tags</h2>
-    {% for tag in Tags %}
-        <h4>
-            <a href ="{% url "my_blog:post_list_by_tag" tag.slug %}" class="transfer">
-               {{ tag.name }}
-            </a>
-        </h4>
+<!--<div class="tag_sidebar">-->
+<!--    <h2>Most common tags</h2>-->
+<!--    {% for tag in tags %}-->
+<!--    <h4>-->
 
-    {% endfor %}
+<!--        <a href="{% url 'post_list_by_tag' tag.slug %}" class="transfer">-->
+<!--            {{ tag.name }}-->
+<!--        </a>-->
+<!--    </h4>-->
 
-</div>
+<!--    {% endfor %}-->
+
+<!--</div>-->
 
 <div style="clear:both;"></div>
-
 
 
 {% endblock %}

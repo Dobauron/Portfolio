@@ -29,9 +29,6 @@ def post_list(request, tag_slug=None):
                    'tag': tag,
                    'Tags': Tags,
                    'page': page})
-    # take all object's parameter
-
-    # return site with |post| data from data base
 
 
 # def tag_list(request, tag_slug=None):
@@ -46,22 +43,28 @@ def post_list(request, tag_slug=None):
 #                   {'posts': posts,
 #                    'tag': tag})
 class PostListView(ListView):
-    model = post_list
+    model = Post
     queryset = Post.published.all()
     context_object_name = 'posts'
-
     paginate_by = 5
     template_name = 'my_blog/posts/post_list.html'
 
 
 class TaggedListView(DetailView):
-    model = post_list
-    queryset = Post.objects.all()
-    paginate_by = 3
-    template_name = "my_blog/posts/post_list.html"
+    # queryset = Tag.objects.filter(tags__name__in=['tag'])
+    template_name = "my_blog/posts/tag_detail.html"
+    context_object_name = 'tags'
 
-    def get_queryset(self, tag):
-        return Post.objects.filter(tags__name__in=[tag])
+    def get_queryset(self):
+
+        print(Post.objects.filter(tags__slug=self.kwargs.get('slug')))
+        return Tag.objects.filter(slug=self.kwargs.get('slug'))
+
+    def get_context_data(self, **kwargs):
+        context = super(TaggedListView, self).get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        print(context)
+        return context
 
 
 def post_detail(request, year, month, day, post):

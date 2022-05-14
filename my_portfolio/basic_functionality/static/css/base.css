@@ -27,9 +27,8 @@ float:left;
 
 .post_div
 {
-width:50%;
+width:100%;
 text-align:center;
-margin-top:900px;
 }
 
 .log
@@ -220,4 +219,29 @@ input[type=submit], a.button {
     padding:10px 20px;
     font-size:14px;
     text-transform:uppercase;
+}
+
+.tag_sidebar
+{
+background-color:#757575;
+float:left;
+width:400px;
+height:auto;
+}
+.post_list
+{
+width:800px;
+height:auto;
+background-color:#535353;
+text-align:center;
+float:left;
+}
+a.list_to_detail
+{
+color:#ffffff;
+text-decoration:none;
+display:block;
+width:300px;
+height:30px;
+
 }

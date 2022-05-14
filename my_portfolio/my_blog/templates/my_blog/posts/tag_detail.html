@@ -1,0 +1,19 @@
+{% extends "my_blog/my_blog.html" %}
+{% load static %}
+
+{% block content %}
+<div class="tag_sidebar">
+    <h2>Most common tags</h2>
+    {% for tag in tags %}
+    <h4>
+
+        <a href="{% url 'post_list_by_tag' tag.slug %}" class="transfer">
+            {{ tag }}
+        </a>
+    </h4>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
