@@ -43,11 +43,18 @@ def post_list(request, tag_slug=None):
 #                   {'posts': posts,
 #                    'tag': tag})
 class PostListView(ListView):
-    model = Post
-    queryset = Post.published.all()
-    context_object_name = 'posts'
-    paginate_by = 5
+    paginate_by = 3
     template_name = 'my_blog/posts/post_list.html'
+    context_object_name = 'posts'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(PostListView, self).get_context_data(**kwargs)
+        context.update({'tags': Tag.objects.all(),
+                        'post_by_tag': Post.objects.filter(tags__slug=self.kwargs.get('slug'))})
+        return context
+
+    def get_queryset(self):
+        return Post.published.all()
 
 
 class TaggedListView(DetailView):
@@ -56,7 +63,6 @@ class TaggedListView(DetailView):
     context_object_name = 'tags'
 
     def get_queryset(self):
-
         print(Post.objects.filter(tags__slug=self.kwargs.get('slug')))
         return Tag.objects.filter(slug=self.kwargs.get('slug'))
 

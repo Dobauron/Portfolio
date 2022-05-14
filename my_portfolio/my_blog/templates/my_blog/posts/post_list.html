@@ -3,33 +3,42 @@
 
 {% block content %}
 <div class="post_list">
-    <h2>Lista Postów</h2>
-    {% for post in posts %}
+    {% if post_by_tag %}
+        <h2>Post list by tag</h2>
+        {% for post in post_by_tag %}
+        <h4>
+            <a href="{{ post.get_absolute_url }}" class="list_to_detail">
+                {{ post.title }}
+            </a>
+        </h4>
+        {% endfor %}
 
-    <h4>
-        <a href="{{ post.get_absolute_url }}" class="list_to_detail">
-            {{ post.title }}
-        </a>
-    </h4>
-    {% endfor %}
+    {% else %}
+         <h2>Post list</h2>
+        {% for post in posts %}
+        <h4>
+            <a href="{{ post.get_absolute_url }}" class="list_to_detail">
+                {{ post.title }}
+            </a>
+        </h4>
+        {% endfor %}
+    {% endif %}
     {% include "paginator.html" with page=posts %}
 
 </div>
-<!--<div class="tag_sidebar">-->
-<!--    <h2>Most common tags</h2>-->
-<!--    {% for tag in tags %}-->
-<!--    <h4>-->
+<div class="tag_sidebar">
+    <h2>Tag list</h2>
+    {% for tag in tags %}
+    <h4>
 
-<!--        <a href="{% url 'post_list_by_tag' tag.slug %}" class="transfer">-->
-<!--            {{ tag.name }}-->
-<!--        </a>-->
-<!--    </h4>-->
+        <a href="{% url 'post_list_by_tag' tag.slug %}" class="list_to_detail">
+            {{ tag.name }}
+        </a>
+    </h4>
 
-<!--    {% endfor %}-->
-
-<!--</div>-->
+    {% endfor %}
+    {% include "paginator.html" with page=posts %}
+</div>
 
 <div style="clear:both;"></div>
-
-
 {% endblock %}
